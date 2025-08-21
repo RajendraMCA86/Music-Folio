@@ -114,7 +114,7 @@ const BookingPage = () => {
       </div>
 
       {/* Saved Data Section */}
-      <div className="max-w-2xl w-full mt-10">
+      {/* <div className="max-w-2xl w-full mt-10">
         <h2 className="text-xl font-bold mb-4">Submitted Bookings</h2>
         {bookings.length === 0 ? (
           <p className="text-white">No bookings yet</p>
@@ -133,7 +133,7 @@ const BookingPage = () => {
             ))}
           </div>
         )}
-      </div>
+      </div> */}
     </div>
   );
 };
