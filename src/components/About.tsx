@@ -8,12 +8,24 @@ const AboutSection: React.FC = () => {
       {/* About Section */}
       <section id="about" className="py-20 px-6">
         <div className="max-w-7xl mx-auto">
-          <div className="grid md:grid-cols-2 gap-12 items-center">
-            <div>
-              <h2 className="text-5xl font-bold mb-6 bg-gradient-to-r from-red-400 to-orange-400 bg-clip-text text-transparent">
+          <h2 className="text-5xl font-bold  p-6 bg-gradient-to-r from-red-400 to-orange-400 bg-clip-text text-transparent">
                 My Story
               </h2>
-              <p className="text-lg text-gray-300 mb-6 leading-relaxed">
+          <div className="grid md:grid-cols-2 gap-12 items-center p-2">
+                  {/* image */}
+                  <div className="relative">
+                    <div className="absolute inset-0 bg-gradient-to-br from-red-500/20 to-orange-500/20 rounded-2xl transform rotate-3"></div>
+                    <img
+                      src="https://wallpapers.com/images/high/arijit-singh-on-aesthetic-grand-stage-4o0rjnwjevzp5bam.webp"
+                      alt="Artist portrait"
+                      className="relative rounded-2xl w-full h-96 object-cover shadow-2xl"
+                    />
+                  </div>
+            <div>
+              <h3 className="text-5xl  mb-10 pb-2 bg-gradient-to-r from-red-400 to-orange-400 bg-clip-text text-transparent">
+                Singer
+              </h3>
+              <p className="text-lg mt-1 text-gray-300 mb-6 leading-relaxed">
                 Born from the intersection of classical training and modern
                 innovation, my artistic journey spans over a decade of pushing
                 creative boundaries. Each performance is a unique narrative that
@@ -69,14 +81,6 @@ const AboutSection: React.FC = () => {
                   },
                 ]}
                 direction="right"
-              />
-            </div>
-            <div className="relative">
-              <div className="absolute inset-0 bg-gradient-to-br from-red-500/20 to-orange-500/20 rounded-2xl transform rotate-3"></div>
-              <img
-                src="https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?w=600&h=800&fit=crop"
-                alt="Artist portrait"
-                className="relative rounded-2xl w-full h-96 object-cover shadow-2xl"
               />
             </div>
           </div>

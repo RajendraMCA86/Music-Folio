@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Star, User, Calendar, TrendingUp } from 'lucide-react';
+import { Star, Calendar, TrendingUp } from 'lucide-react';
 
 // Types
 interface Rating {
@@ -156,11 +156,11 @@ const RatingSection: React.FC = () => {
 
       {/* Average Rating Summary */}
       <div className="mt-12 max-w-2xl mx-auto text-center">
-        <div className="bg-gray-800/40 rounded-xl p-6">
+        <div className="bg-gray-800/40 rounded-xl p-6 items-center">
           <h3 className="text-lg font-semibold flex items-center justify-center mb-2">
             <TrendingUp className="text-green-400 mr-2" /> Average Rating
           </h3>
-          <div className="text-3xl font-bold text-yellow-400">{averageRating}</div>
+          <div className=" justify-center text-3xl font-bold text-yellow-400">{averageRating}</div>
           <RatingStars rating={Math.round(Number(averageRating))} />
           <p className="text-gray-400 text-sm mt-2">{ratings.length} review(s) total</p>
         </div>

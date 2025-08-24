@@ -6,3 +6,13 @@ export default {
   },
   plugins: [],
 }
+
+module.exports = {
+  theme: {
+    extend: {
+      screens: {
+        xs: { max: "375px" }, // applies to 375px and below
+      },
+    },
+  },
+};
