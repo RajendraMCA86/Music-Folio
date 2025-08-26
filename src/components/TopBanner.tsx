@@ -1,4 +1,4 @@
-import { Mail, Phone, Instagram, Facebook, Twitter } from "lucide-react";
+import { Phone, Instagram, Facebook, Twitter } from "lucide-react";
 
 export default function TopBanner() {
   return (

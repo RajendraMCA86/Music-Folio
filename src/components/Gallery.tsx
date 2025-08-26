@@ -31,7 +31,7 @@ const GallerySection = () => {
   ];
 
   return (
-    <section id="gallery" className="py-20 px-6">
+    <section id="gallery" className="py-20 px-6 bg-black">
       <div className="max-w-7xl mx-auto">
         <h2 className="text-5xl font-bold text-center p-10 bg-gradient-to-r from-red-400 to-orange-400 bg-clip-text text-transparent">
           Visual Journey

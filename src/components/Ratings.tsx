@@ -74,7 +74,11 @@ const RatingSection: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-900 to-black text-white px-6 py-12">
+    // bg-gradient-to-br from-gray-900 to-black
+    <div className="min-h-screen bg-black text-white px-6 py-12">
+      <h2 className='text-5xl font-bold text-center mb-6 bg-gradient-to-r from-red-400 to-orange-400 bg-clip-text text-transparent'>
+        Reviews
+      </h2>
       <div className="max-w-6xl mx-auto grid lg:grid-cols-2 gap-12">
         {/* Form Section */}
         <div className="bg-gray-800/40 p-8 rounded-2xl shadow-lg">

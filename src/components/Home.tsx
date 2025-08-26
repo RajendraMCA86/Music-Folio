@@ -17,8 +17,8 @@ const Home = () => {
               <h1 className="text-6xl md:text-8xl font-bold P-8 bg-gradient-to-r from-white via-red-200 to-red-400 bg-clip-text text-transparent">
                 ARIJIT SINGH
               </h1>
-              <p className="text-xl md:text-2xl m-4 text-gray-300">
-                Artist & Singer 
+              <p className="text-xl md:text-2xl my-4 text-gray-300">
+                He is a soulful voice of modern Bollywood whose chart‑topping hits and timeless melodies have made him a musical icon.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 items-center sm:items-start justify-center md:justify-start">
                 <a

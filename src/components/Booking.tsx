@@ -1,26 +1,24 @@
-import { useState, useEffect } from "react";
+import { useState, useRef } from "react";
+import { Toaster, toast } from "react-hot-toast";
+import emailjs from "@emailjs/browser";
 
 const BookingPage = () => {
+
+  const form = useRef<HTMLFormElement>(null);
+  const [loading, setLoading] = useState(false);
+
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     phone: "",
     occasion: "",
     date: "",
-    venue:"",
+    venue: "",
     budget: "",
     message: "",
   });
 
-  const [bookings, setBookings] = useState<any[]>(() => {
-    const stored = localStorage.getItem("bookings");
-    return stored ? JSON.parse(stored) : [];
-  });
-
-  useEffect(() => {
-    localStorage.setItem("bookings", JSON.stringify(bookings));
-  }, [bookings]);
-
+  // handle input change
   const handleChange = (
     e: React.ChangeEvent<
       HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
@@ -32,29 +30,41 @@ const BookingPage = () => {
     });
   };
 
-  const handleSubmit = () => {
-    if (formData.name && formData.email && formData.phone) {
-      const newBookings = [
-        ...bookings,
-        { ...formData, date: new Date().toLocaleString() },
-      ];
-      setBookings(newBookings);
-      alert("Success");
+  // handle submit with emailjs
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!form.current) return;
 
-      // Reset form
-      setFormData({
-        name: "",
-        email: "",
-        phone: "",
-        date: "",
-        venue:"",
-        occasion: "",
-        budget: "",
-        message: "",
-      });
-    } else {
-      alert("server eror");
-    }
+    setLoading(true);
+
+    emailjs
+      .sendForm(
+        "service_kwdztcw", // replace with EmailJS Service ID
+        "template_ay7cb3k", // replace with EmailJS Template ID
+        form.current,
+        "Oy8Le4Lw2lAwLxSfk" // replace with EmailJS Public Key
+      )
+      .then(
+        () => {
+          toast.success("🎉 Your form was submitted successfully!");
+          setLoading(false);
+          form.current?.reset();
+          setFormData({
+            name: "",
+            email: "",
+            phone: "",
+            occasion: "",
+            date: "",
+            venue: "",
+            budget: "",
+            message: "",
+          });
+        },
+        () => {
+          toast.error(" Something went wrong. Please try again. 😥");
+          setLoading(false);
+        }
+      );
   };
 
   return (
@@ -70,9 +80,9 @@ const BookingPage = () => {
         <p className="text-white">Get in touch to book your event</p>
       </div>
 
-      <div className="flex flex-col md:flex-row items-center md:items-start gap-10  shadow-lg rounded-2xl p-6 md:p-8 max-w-6xl mx-auto">
-        {/* Mobile Image near heading */}
-        <div className="md:hidden flex justify-center mb-4">
+      <div className="flex flex-col md:flex-row items-center md:items-start gap-10 shadow-lg rounded-2xl p-6 md:p-8 max-w-6xl mx-auto">
+        {/* Mobile Image */}
+        <div className="md:hidden flex justify-center mb-2">
           <img
             src="https://wallpapers.com/images/high/arijit-singh-on-live-concert-x0d4ij6s2fuxbvg5.webp"
             alt="singer"
@@ -81,7 +91,11 @@ const BookingPage = () => {
         </div>
 
         {/* Form Section */}
-        <form onSubmit={handleSubmit} className="w-full md:w-2/3 space-y-4">
+        <form
+          ref={form}
+          onSubmit={handleSubmit}
+          className="w-full md:w-2/3 space-y-4"
+        >
           <input
             type="text"
             name="name"
@@ -99,6 +113,8 @@ const BookingPage = () => {
             placeholder="Your Email"
             className="w-full border p-3 rounded bg-gray-950 text-white"
             required
+            pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+            title="Please enter a valid email address"
           />
           <input
             type="tel"
@@ -108,6 +124,8 @@ const BookingPage = () => {
             placeholder="Your Phone"
             className="w-full border p-3 rounded bg-gray-950 text-white"
             required
+            pattern="^[6-9]\d{9}$"
+            title="Please enter a valid 10-digit Indian phone number"
           />
           <input
             type="text"
@@ -120,14 +138,23 @@ const BookingPage = () => {
           />
           <input
             type="date"
-            id="eventDate"
-            name="eventDate"
+            id="date"
+            name="date"
             value={formData.date}
             onChange={handleChange}
+            min={new Date().toISOString().split("T")[0]} // prevent past dates
             className="border p-3 rounded w-full bg-gray-950 text-white"
           />
           {formData.date && (
-            <p className="text-sm text-gray-400">You picked: {formData.date}</p>
+            <p className="text-sm text-white">
+              You picked:{" "}
+              {new Date(formData.date).toLocaleDateString("en-US", {
+                weekday: "long",
+                year: "numeric",
+                month: "long",
+                day: "numeric",
+              })}
+            </p>
           )}
           <input
             type="text"
@@ -146,6 +173,9 @@ const BookingPage = () => {
             placeholder="Budget (Approximate)"
             className="w-full border p-3 rounded bg-gray-950 text-white"
             required
+            min={20000}
+            step={500}
+            title="Minimum budget ₹20,000 "
           />
           <textarea
             name="message"
@@ -157,10 +187,12 @@ const BookingPage = () => {
 
           <button
             type="submit"
-            className="mt-6 w-full bg-blue-600 text-white p-3 rounded-lg font-semibold hover:bg-blue-900 transition"
+            disabled={loading}
+            className="mt-6 w-full bg-blue-600 text-white p-3 rounded-lg font-semibold hover:bg-blue-900 transition disabled:opacity-50"
           >
-            Submit 
+            {loading ? "Sending..." : "Submit"}
           </button>
+          <Toaster position="top-center" reverseOrder={false} />
         </form>
 
         {/* Desktop Image */}

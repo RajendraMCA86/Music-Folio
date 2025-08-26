@@ -1,91 +1,3 @@
-// import { useState } from "react";
-
-// const videos = [
-//   {
-//     id: 1,
-//     title: "Live Concert",
-//     url: "https://www.w3schools.com/html/mov_bbb.mp4",
-//     thumbnail: "https://img.youtube.com/vi/aqz-KE-bpKQ/0.jpg",
-//   },
-//   {
-//     id: 2,
-//     title: "Music Video",
-//     url: "https://youtu.be/cUmUOb7j3dc?si=Pc9Y9fq9_8o_oF7N",
-//     thumbnail: "https://img.youtube.com/vi/tgbNymZ7vqY/0.jpg",
-//   },
-//   {
-//     id: 3,
-//     title: "Interview",
-//     url: "https://youtu.be/Hi_gyY-mMQo?si=pE0CbAp4SHStUeJx.mp4",
-//     thumbnail: "https://img.youtube.com/vi/dQw4w9WgXcQ/0.jpg",
-//   },
-//   {
-//     id: 4,
-//     title: "Interview",
-//     url: "https://www.w3schools.com/html/mov_bbb.mp4",
-//     thumbnail: "https://img.youtube.com/vi/dQw4w9WgXcQ/0.jpg",
-//   },
-//   {
-//     id: 5,
-//     title: "Interview",
-//     url: "https://www.w3schools.com/html/mov_bbb.mp4",
-//     thumbnail: "https://img.youtube.com/vi/dQw4w9WgXcQ/0.jpg",
-//   },
-// ];
-
-// export default function VideoPlayer() {
-//   const [currentVideo, setCurrentVideo] = useState(videos[0]);
-
-//   return (
-//     <div className="flex flex-col md:flex-row-reverse gap-8 max-w-7xl mx-auto p-6">
-//       {/* Video List */}
-//       <div className="w-full md:w-1/3 space-y-4 overflow-y-auto max-h-[500px] pr-2">
-//         {videos.map((video) => (
-//           <div
-//             key={video.id}
-//             className={`flex items-center gap-3 p-3 rounded-lg cursor-pointer border transition
-//         ${
-//           currentVideo.id === video.id
-//             ? "border-blue-500 bg-gray-900"
-//             : "border-gray-700 hover:bg-gray-800"
-//         }`}
-//             onClick={() => setCurrentVideo(video)}
-//           >
-//             <img
-//               src={video.thumbnail}
-//               alt={video.title}
-//               className="w-24 h-16 object-cover rounded"
-//             />
-//             <p className="text-white text-sm font-medium">{video.title}</p>
-//           </div>
-//         ))}
-//       </div>
-
-//       {/* Video Player */}
-//       <div className="w-full md:w-2/3 flex flex-col items-center relative">
-//         {/* Glow Background */}
-//         <div className="absolute inset-0 flex justify-center items-center pointer-events-none">
-//           <div className="w-[90%] h-[90%] rounded-full bg-gradient-to-tr from-blue-600/30 via-purple-600/20 to-pink-600/30 blur-3xl"></div>
-//         </div>
-
-//         <video
-//           key={currentVideo.id}
-//           controls
-//           autoPlay
-//           className="relative z-10 w-full h-[300px] md:h-[600px] rounded-xl shadow-2xl"
-//         >
-//           <source src={currentVideo.url} type="video/mp4" />
-//           Your browser does not support HTML video.
-//         </video>
-
-//         <h2 className="mt-4 text-lg font-semibold text-white relative z-10">
-//           {currentVideo.title}
-//         </h2>
-//       </div>
-//     </div>
-//   );
-// }
-
 import { useState } from "react";
 
 const videos = [
@@ -131,12 +43,12 @@ const VideoPlayer = () => {
   const [selectedVideo, setSelectedVideo] = useState(videos[0]);
 
   return (
-    <div className="flex flex-col md:flex-row min-h-screen bg-gray-900 text-white p-6 gap-6">
-      <h2 className="text-5xl font-bold  p-6 bg-gradient-to-r from-red-400 to-orange-400 bg-clip-text text-transparent">
-        
-      </h2>
+    <div className=" bg-gray-950">
+      <h2 className="text-5xl text-center font-bold  p-6 bg-gradient-to-r from-red-400 to-orange-400 bg-clip-text text-transparent">
+        Videos & Album</h2>
+    <div className="flex flex-col md:flex-row min-h-scree text-white p-6 gap-6">
       {/* Video Player */}
-      <div className="flex-1 flex items-center justify-center bg-black rounded-2xl shadow-2xl relative relative w-full max-w-6xl border border-zinc-700 mb-2 aspect-video shadow-2xl shadow-purple-900">
+      <div className="flex-1 flex items-center justify-center bg-black rounded-2xl shadow-xl relative relative w-full max-w-5xl border border-zinc-700 mb-2 aspect-video shadow-lg shadow-blue-950">
         <iframe
           src={selectedVideo.url}
           title={selectedVideo.title}
@@ -175,6 +87,7 @@ const VideoPlayer = () => {
         </div>
       </div>
     </div>
+  </div>
   );
 };
 
