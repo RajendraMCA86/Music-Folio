@@ -3,5 +3,6 @@ import react from '@vitejs/plugin-react'
 import tailwindcss from '@tailwindcss/vite'
 
 export default defineConfig({
+  base:'/Music-Folio-fork/',
   plugins: [react(), tailwindcss()],
 })

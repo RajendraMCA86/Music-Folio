@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Star, User, Calendar, TrendingUp } from 'lucide-react';
+import { Star, Calendar, TrendingUp } from 'lucide-react';
 
 // Types
 interface Rating {
@@ -74,7 +74,11 @@ const RatingSection: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-900 to-black text-white px-6 py-12">
+    // bg-gradient-to-br from-gray-900 to-black
+    <div className="min-h-screen bg-black text-white px-6 py-12">
+      <h2 className='text-5xl font-bold text-center mb-6 bg-gradient-to-r from-red-400 to-orange-400 bg-clip-text text-transparent'>
+        Reviews
+      </h2>
       <div className="max-w-6xl mx-auto grid lg:grid-cols-2 gap-12">
         {/* Form Section */}
         <div className="bg-gray-800/40 p-8 rounded-2xl shadow-lg">
@@ -156,11 +160,11 @@ const RatingSection: React.FC = () => {
 
       {/* Average Rating Summary */}
       <div className="mt-12 max-w-2xl mx-auto text-center">
-        <div className="bg-gray-800/40 rounded-xl p-6">
+        <div className="bg-gray-800/40 rounded-xl p-6 items-center">
           <h3 className="text-lg font-semibold flex items-center justify-center mb-2">
             <TrendingUp className="text-green-400 mr-2" /> Average Rating
           </h3>
-          <div className="text-3xl font-bold text-yellow-400">{averageRating}</div>
+          <div className=" justify-center text-3xl font-bold text-yellow-400">{averageRating}</div>
           <RatingStars rating={Math.round(Number(averageRating))} />
           <p className="text-gray-400 text-sm mt-2">{ratings.length} review(s) total</p>
         </div>
