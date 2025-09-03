@@ -33,7 +33,7 @@ const Footer = () => {
         {/* Social Icons */}
         <div className="flex justify-center space-x-6 mb-8">
           <a
-            href="https://www.instagram.com/"
+            href="https://www.instagram.com/radhikachouhan_indore/"
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Instagram"

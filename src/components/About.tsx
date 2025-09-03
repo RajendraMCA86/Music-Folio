@@ -42,7 +42,7 @@ const AboutSection: React.FC = () => {
                   {
                     action: () =>
                       window.open(
-                        "https://www.instagram.com/oriyonmusicbyarijitsingh/",
+                        "https://www.instagram.com/radhikachouhan_indore/",
                         "_blank"
                       ),
                     icon: <Instagram />,
@@ -59,16 +59,16 @@ const AboutSection: React.FC = () => {
                     key: "facebook",
                     label: "Facebook",
                   },
-                  {
-                    action: () =>
-                      window.open(
-                        "https://x.com/OriyonmusicbyAS?s=09",
-                        "_blank"
-                      ),
-                    icon: <Twitter />,
-                    key: "x",
-                    label: "X",
-                  },
+                  // {
+                  //   action: () =>
+                  //     window.open(
+                  //       "https://x.com/OriyonmusicbyAS?s=09",
+                  //       "_blank"
+                  //     ),
+                  //   icon: <Twitter />,
+                  //   key: "x",
+                  //   label: "X",
+                  // },
                   {
                     action: () =>
                       window.open(

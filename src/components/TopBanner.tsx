@@ -15,7 +15,7 @@ export default function TopBanner() {
 
         {/* Social Links */}
         <div className="flex items-center gap-3">
-          <a href="https://instagram.com" target="_blank" className="hover:text-pink-500 transition">
+          <a href="https://www.instagram.com/radhikachouhan_indore/#" target="_blank" className="hover:text-pink-500 transition">
             <Instagram size={18} />
           </a>
           <a href="https://facebook.com" target="_blank" className="hover:text-blue-500 transition">
